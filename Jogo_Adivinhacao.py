@@ -11,7 +11,7 @@ def menu():
 
     while True: # Loop para validar a escolha do usuário
         try:
-            opcao = int(input("Escolha uma opção ( 1 ou 2 ): "))
+            opcao = int(input("Escolha uma opção ( 1 ou 2 ): "))    
             break
         except:
          print("Opção inválida. Tente novamente.")
@@ -32,6 +32,7 @@ def menu_dificuldade():
    
     while True: #loop pra validar a escolha de dificuldade do usuário
         try: 
+            print()
             dificuldade = int(input("Escolha a diificuldade (1, 2 ou 3): "))
             break
         except:
@@ -63,8 +64,9 @@ def jogar(dificuldade):
         while True: # Loop para validar a entrada do usuário
             try:
                 print(f"_______________________________________________")
-                print(f"Tentativa {tentativas + 1} de {limite}")
+                print(f"Tentativa {tentativas + 1} de {limite}  | Range: 1 a {maximo}")
                 palpite = int(input(f"Digite um número entre 1 e {maximo}: "))
+                print()
                 if palpite < 1 or palpite > maximo:
                     print(f"Número digitado inválido. Por favor, digite um número entre 1 e {maximo}: ")
                     continue
@@ -74,7 +76,8 @@ def jogar(dificuldade):
         
         tentativas += 1
         if tentativas > limite:
-            print(f"Suas tentativas acabaram! O numero secreto era {numero_secreto}")
+            print("💀 GAME OVER! 💀")
+            print(f"O numero secreto era {numero_secreto}")
             break
         if palpite < numero_secreto:
             print("Seu palpite é muito baixo. Tente novamente. ")
@@ -82,6 +85,12 @@ def jogar(dificuldade):
             print("Seu palpite é muito alto. Tente novamnente.")
         else:
             print(f"Parabens! Você acertou o número secreto em {tentativas} tentativas.")
+            if tentativas <= limite // 3:
+                print("⭐⭐⭐ Incrível!")
+            elif tentativas <= limite // 2:
+                print("⭐⭐ Muito bom!")
+            else:
+                print("⭐ Conseguiu!")
             break
 
 # Verificar a escolha do usuário e iniciar o jogo ou sair
