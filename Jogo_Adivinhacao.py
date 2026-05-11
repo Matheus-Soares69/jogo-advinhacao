@@ -11,7 +11,7 @@ def menu():
 
     while True: # Loop para validar a escolha do usuário
         try:
-            opcao = int(input("Escolha uma opção ( 1 ou 2): "))
+            opcao = int(input("Escolha uma opção ( 1 ou 2 ): "))
             break
         except:
          print("Opção inválida. Tente novamente.")
@@ -36,6 +36,9 @@ def menu_dificuldade():
             break
         except:
             print("Opção inválida. Tente novamente.")
+    if dificuldade != 1 and dificuldade != 2 and dificuldade != 3:
+            print("opção inválida. Tente novamente.")
+            return menu_dificuldade()
     return dificuldade
 print("==========================")
 
