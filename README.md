@@ -18,3 +18,9 @@ python Jogo_Adivinhacao.py
 - Loops com while
 - Condicionais com if/elif/else
 - Entrada do usuário com input()
+
+## Tecnologias
+
+- Python
+- VScode
+- Biblioteca random
