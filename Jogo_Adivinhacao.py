@@ -8,7 +8,8 @@ def menu():
     print("========================")
     print("1 - Jogar")
     print("2 - Sair")
-    while True:
+
+    while True: # Loop para validar a escolha do usuário
         try:
             opcao = int(input("Escolha uma opção ( 1 ou 2): "))
             break
@@ -20,25 +21,58 @@ def menu():
          opcao = int(input("Escolha uma opção (1 ou 2): "))
     return opcao
 opcao = menu()
+print("=========================")
+
+# Função para exibir o menu de dificuldade e obter a escolha do usuário
+def menu_dificuldade():
+    print("Dificuldade 1 - Fácil (10 tentativas)") # range de 1 a 100
+    print("Dificuldade 2 - Médio (15 tentativas)")# range de 1 a 150
+    print("Dificuldade 3 - Difícil (18 tentativas)")# range de 1 a 200
+    print("__________________________")
+   
+    while True: #loop pra validar a escolha de dificuldade do usuário
+        try: 
+            dificuldade = int(input("Escolha a diificuldade (1, 2 ou 3): "))
+            break
+        except:
+            print("Opção inválida. Tente novamente.")
+    return dificuldade
+print("==========================")
+
+
 
 #Função para jogar o jogo de adivinhação
-def jogar():
+def jogar(dificuldade):
     
-    numero_secreto = random.randint(1, 100)
+    if dificuldade == 1:
+        maximo = 100
+        limite = 10
+    elif dificuldade == 2:
+        maximo = 150
+        limite = 15
+    else:
+        maximo = 200
+        limite = 18
+    numero_secreto = random.randint(1, maximo)
     tentativas = 0
     while True: # Loop do jogo
 
         while True: # Loop para validar a entrada do usuário
             try:
-                palpite = int(input("Digite um número entre 1 e 100: "))
-                if palpite < 1 or palpite > 100:
-                    print("Número digitado inválido. Por favor, digite um número entre 1 e 100: ")
+                print(f"_______________________________________________")
+                print(f"Tentativa {tentativas + 1} de {limite}")
+                palpite = int(input(f"Digite um número entre 1 e {maximo}: "))
+                if palpite < 1 or palpite > maximo:
+                    print(f"Número digitado inválido. Por favor, digite um número entre 1 e {maximo}: ")
                     continue
                 break
             except:
-                print("Entrada inválida. Por favor, Digite apenas números inteiros entre 1 e 100.")
+                print(f"Entrada inválida. Por favor, Digite apenas números inteiros entre 1 e {maximo}:")
         
         tentativas += 1
+        if tentativas > limite:
+            print(f"Suas tentativas acabaram! O numero secreto era {numero_secreto}")
+            break
         if palpite < numero_secreto:
             print("Seu palpite é muito baixo. Tente novamente. ")
         elif palpite > numero_secreto:
@@ -50,11 +84,13 @@ def jogar():
 # Verificar a escolha do usuário e iniciar o jogo ou sair
 continuar = True
 if opcao == 1:
-    jogar()
+    dificuldade = menu_dificuldade()
+    jogar(dificuldade)
     opcao = input("Deseja jogar novamente? (S/N): ")
     while continuar == True:
         if opcao.upper() == "S":
-            jogar()
+            dificuldade = menu_dificuldade()
+            jogar(dificuldade)
             opcao = input("Deseja jogar novamente? (S/N): ")
         elif opcao.upper() == "N":
             print("Obrigado por jogar! Até a próxima.")
