@@ -4,16 +4,20 @@ import random
 
 def menu():
     print("========================")
-    print("   JOGO DE ADVINHAÇÃO   ")  
+    print("   JOGO DE ADIVINHAÇÃO   ")  
     print("========================")
     print("1 - Jogar")
     print("2 - Sair")
+    while True:
+        try:
+            opcao = int(input("Escolha uma opção ( 1 ou 2): "))
+            break
+        except:
+         print("Opção inválida. Tente novamente.")
     
-    opcao = int(input("Escolha uma opção ( 1 ou 2): "))
-
-    while opcao != 1 and opcao !=2: 
-        print("Opção inválida. Tente novamente.")
-        opcao = int(input("Escolha uma opçaõ (1 ou 2): "))
+    while opcao != 1 and opcao !=2:
+         print("Opção inválida. Tente novamente.")
+         opcao = int(input("Escolha uma opção (1 ou 2): "))
     return opcao
 opcao = menu()
 
@@ -22,11 +26,21 @@ def jogar():
     
     numero_secreto = random.randint(1, 100)
     tentativas = 0
-    while True:
-        palpite = int(input("Digite um número entre 1 e 100: "))
+    while True: # Loop do jogo
+
+        while True: # Loop para validar a entrada do usuário
+            try:
+                palpite = int(input("Digite um número entre 1 e 100: "))
+                if palpite < 1 or palpite > 100:
+                    print("Número digitado inválido. Por favor, digite um número entre 1 e 100: ")
+                    continue
+                break
+            except:
+                print("Entrada inválida. Por favor, Digite apenas números inteiros entre 1 e 100.")
+        
         tentativas += 1
         if palpite < numero_secreto:
-            print("Seu palpite é muito baixo. Tente novamente.")
+            print("Seu palpite é muito baixo. Tente novamente. ")
         elif palpite > numero_secreto:
             print("Seu palpite é muito alto. Tente novamnente.")
         else:
