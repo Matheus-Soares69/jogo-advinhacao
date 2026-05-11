@@ -75,7 +75,7 @@ def jogar(dificuldade):
                 print(f"Entrada inválida. Por favor, Digite apenas números inteiros entre 1 e {maximo}:")
         
         tentativas += 1
-        if tentativas > limite:
+        if tentativas >= limite:
             print("💀 GAME OVER! 💀")
             print(f"O numero secreto era {numero_secreto}")
             break
