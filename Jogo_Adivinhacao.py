@@ -63,7 +63,7 @@ def jogar(dificuldade):
 
         while True: # Loop para validar a entrada do usuário
             try:
-                print(f"_______________________________________________")
+                print()
                 print(f"Tentativa {tentativas + 1} de {limite}  | Range: 1 a {maximo}")
                 palpite = int(input(f"Digite um número entre 1 e {maximo}: "))
                 print()
