@@ -1,4 +1,4 @@
-# Jogo de Advinhação ( MENU )
+# Jogo de Advinhação - desenvolvido por: Matheus Soares
 # Função para exibir o menu do jogo e obter a escolha do usuário
 import random
 
